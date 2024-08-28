@@ -54,6 +54,10 @@ MainWindow::~MainWindow()
 void MainWindow::on_btnAdd_clicked()
 {
     QListWidgetItem* item = new QListWidgetItem(ui->txtTask->text(), ui->listWidget);
+    if (item->text() == ""){
+        ui->txtTask->setFocus();
+        return;
+    }
     ui->listWidget->addItem(item);
     item->setFlags(item->flags() | Qt::ItemIsEditable);
     ui->txtTask->clear();
